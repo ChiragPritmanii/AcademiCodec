@@ -203,7 +203,12 @@ def main_worker(local_rank, args):
     #CUDA_VISIBLE_DEVICES = int(args.local_rank)
     logger = Logger(args)
     # 240倍下采
-    soundstream = SoundStream(n_filters=32, D=512, ratios=args.ratios)
+    soundstream = SoundStream(n_filters=32, 
+                              D=256,
+                              bins=1024,
+                              sample_rate=args.sr,
+                              target_bandwidths=args.target_bandwidths, 
+                              ratios=args.ratios)
     msd = MultiScaleDiscriminator()
     mpd = MultiPeriodDiscriminator()
     #print('soundstream ', soundstream)
@@ -273,7 +278,7 @@ def main_worker(local_rank, args):
     lr_scheduler_d = torch.optim.lr_scheduler.ExponentialLR(
         optimizer_d, gamma=0.999)
     if args.resume:
-        latest_info = torch.load(args.resume_path + '/latest.pth')
+        latest_info = torch.load(args.resume_path + 'ckpt_01135000.pth') #'/latest.pth'
         args.st_epoch = latest_info['epoch']
         soundstream.load_state_dict(latest_info['soundstream'])
         stft_disc.load_state_dict(latest_info['stft_disc'])
