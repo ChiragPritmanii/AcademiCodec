@@ -6,18 +6,18 @@ import time
 
 import torch
 import torch.distributed as dist
-from academicodec.models.encodec.distributed.launch import launch
-from academicodec.models.encodec.msstftd import MultiScaleSTFTDiscriminator
-from academicodec.models.encodec.net3 import SoundStream
-from academicodec.models.soundstream.dataset import NSynthDataset
-from academicodec.models.soundstream.loss import criterion_d
-from academicodec.models.soundstream.loss import criterion_g
-from academicodec.models.soundstream.loss import loss_dis
-from academicodec.models.soundstream.loss import loss_g
-from academicodec.models.soundstream.models import MultiPeriodDiscriminator
-from academicodec.models.soundstream.models import MultiScaleDiscriminator
-from academicodec.utils import Logger
-from academicodec.utils import seed_everything
+from AcademiCodec.academicodec.models.encodec.distributed.launch import launch
+from AcademiCodec.academicodec.models.encodec.msstftd import MultiScaleSTFTDiscriminator
+from AcademiCodec.academicodec.models.encodec.net3 import SoundStream
+from AcademiCodec.academicodec.models.soundstream.dataset import NSynthDataset
+from AcademiCodec.academicodec.models.soundstream.loss import criterion_d
+from AcademiCodec.academicodec.models.soundstream.loss import criterion_g
+from AcademiCodec.academicodec.models.soundstream.loss import loss_dis
+from AcademiCodec.academicodec.models.soundstream.loss import loss_g
+from AcademiCodec.academicodec.models.soundstream.models import MultiPeriodDiscriminator
+from AcademiCodec.academicodec.models.soundstream.models import MultiScaleDiscriminator
+from AcademiCodec.academicodec.utils import Logger
+from AcademiCodec.academicodec.utils import seed_everything
 from torch.nn.parallel import DistributedDataParallel as DDP
 from tqdm import tqdm
 NODE_RANK = os.environ['INDEX'] if 'INDEX' in os.environ else 0
