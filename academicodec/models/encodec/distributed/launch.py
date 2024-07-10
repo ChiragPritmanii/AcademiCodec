@@ -2,12 +2,12 @@
 # Diffsound
 # code based https://github.com/cientgu/VQ-Diffusion
 # ------------------------------------------
-import distributed.distributed as dist_fn
+# import distributed.distributed as dist_fn
 import torch
 from torch import distributed as dist
 from torch import multiprocessing as mp
 
-# import distributed as dist_fn
+import distributed as dist_fn
 
 
 def find_free_port():
